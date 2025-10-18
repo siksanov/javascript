@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Предварительный просмотр</title>
+        <style>
+            #preview {
+                display: flex;
+                flex-wrap: wrap;
+                border: 1px solid lightgrey;
+            }
+            #preview > div {
+                width: 200px;
+                height: 150px;
+                margin: 10px;
+                background-color: lightgrey;
+            }
+            #preview > div > img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Предварительный просмотр</h1>
+        <p>Выберите файлы</p>
+        <p><input type="file" id="file" accept="image/*" multiple></p>
+        <div id="preview"></div>
+    </body>
+</html>

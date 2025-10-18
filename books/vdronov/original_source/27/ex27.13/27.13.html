@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Цветок</title>
+        <style>
+            canvas {
+                display: block;
+                border: 1px dotted lightgrey;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Цветок</h1>
+        <canvas id="draw" width="300" height="300"></canvas>
+        <script>
+            const colors = ['red', 'green', 'blue', 'yellow'];
+            const draw = document.getElementById('draw');
+            const ctx = draw.getContext('2d');
+
+            ctx.translate(150, 150);
+
+            ctx.save();
+
+            for (let color of colors) {
+                ctx.beginPath();
+                ctx.fillStyle = color;
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(-50, -75, 0, -150);
+                ctx.quadraticCurveTo(50, -75, 0, 0);
+                ctx.fill();
+                ctx.rotate(Math.PI / 2);
+            }
+
+            ctx.restore();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.beginPath();
+            ctx.arc(0, 0, 30, -Math.PI / 2, Math.PI / 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, 0, 29, Math.PI / 2, 1.5 * Math.PI);
+            ctx.stroke();
+        </script>
+    </body>
+</html>

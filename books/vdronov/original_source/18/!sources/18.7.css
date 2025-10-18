@@ -1,0 +1,48 @@
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 42pt;
+    text-align: center;
+}
+.photogallery {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 10pt;
+}
+.photogallery img {
+    display: block;
+    height: 200px;
+    margin: 10pt;
+}
+.lightbox {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.0;
+    transform: scale(0.0, 0.0);
+    transition: opacity 0.3s, scale 0.3s;
+}
+.lightbox img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+}
+.lightbox a {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+.lightbox.active {
+    opacity: 1.0;
+    transform: scale(1.0, 1.0);
+    transition: opacity 0.3s, scale 0.3s;
+}

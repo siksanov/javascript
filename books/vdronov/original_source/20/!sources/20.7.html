@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS-код для создания просветов</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            td {
+                padding: 10px;
+                text-align: center;
+            }
+            tr:last-child td {
+                text-align: right;
+            }
+            #output {
+                border: thin solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS-код для создания просветов</h1>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        Сверху:
+                        <input type="text" id="top" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Слева:
+                        <input type="text" id="left" size="5" maxlength="5" value="0px" required>
+                    </td>
+                    <td>
+                        Справа:
+                        <input type="text" id="right" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Снизу:
+                        <input type="text" id="bottom" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Вид просветов:<br>
+                        <input type="radio" id="padding" name="kind" checked> Внутренние
+                    </td>
+                    <td><br>
+                        <input type="radio" id="margin" name="kind"> Внешние
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Сгенерировать код">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <pre id="output"></pre>
+    </body>
+</html>

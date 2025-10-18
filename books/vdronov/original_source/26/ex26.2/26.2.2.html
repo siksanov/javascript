@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Приветствуем вас :: Передача данных</title>
+    </head>
+    <body>
+        <h1 id="output"></h1>
+        <p><a href="26.2.1.html">Назад</a></p>
+        <script>
+            window.addEventListener('load', () => {
+                const output = document.getElementById('output');
+                const n = window.sessionStorage.getItem('name');
+                output.textContent = `Здравствуйте, ${n}!`;
+            });
+        </script>
+    </body>
+</html>

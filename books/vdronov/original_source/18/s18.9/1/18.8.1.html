@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .output {
+                font-family: 'Courier New', Courier, monospace;
+            }
+            .output code {
+                background-color: lightgrey;
+            }
+        </style>
+        <title>Кода нажатых клавиш</title>
+    </head>
+    <body>
+        <h1>Нажмите клавишу</h1>
+        <p class="output">Значение: <code id="key"></code>.</p>
+        <p class="output">Код: <code id="code"></code>.</p>
+        <script>
+            const key = document.getElementById('key');
+            const code = document.getElementById('code');
+
+            document.body.addEventListener('keydown', evt => {
+                key.textContent = evt.key;
+                code.textContent = evt.code;
+            });
+        </script>
+    </body>
+</html>

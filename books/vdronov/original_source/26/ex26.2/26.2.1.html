@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Введите свое имя :: Передача данных</title>
+    </head>
+    <body>
+        <h1>Введите свое имя</h1>
+        <p><input id="name"></p>
+        <p><a href="26.2.2.html">Вывести приветствие</a></p>
+        <script>
+            window.addEventListener('beforeunload', () => {
+                const name = document.getElementById('name');
+                window.sessionStorage.setItem('name', name.value);
+            });
+        </script>
+    </body>
+</html>

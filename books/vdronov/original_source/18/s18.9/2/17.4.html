@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="17.4.css" rel="stylesheet">
+        <title>Слайдер</title>
+    </head>
+    <body>
+        <section id="slider1">
+            <main>
+                <img src="17.4/1.jpg" class="active">
+                <img src="17.4/2.jpg">
+                <img src="17.4/3.jpg">
+            </main>
+            <nav>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+            </nav>
+        </section>
+        <script src="17.4.js"></script>
+        <script>
+            const slider1 = document.getElementById('slider1');
+            new Slider(slider1);
+        </script>
+    </body>
+</html>

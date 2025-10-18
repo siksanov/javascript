@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Тест базового класса компонента</title>
+    </head>
+    <body>
+        <script type="module">
+            import Component from './31.2.js';
+
+            class TestComponent extends Component {
+                createContent() {
+                    this.baseElement.innerHTML =
+                                     `<h1>Привет, ${this.settings.name}!</h1>`;
+                }
+            }
+
+            const testComponent = new TestComponent({ name: 'читатель' });
+        </script>
+    </body>
+</html>

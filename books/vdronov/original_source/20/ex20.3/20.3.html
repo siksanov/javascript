@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS-код для создания рамки</title>
+        <style type="text/css">
+            td {
+                padding: 5px;
+            }
+            tr:last-child td {
+                text-align: right;
+            }
+            #output {
+                padding: 5pt;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS-код для создания рамки</h1>
+        <form id="form">
+            <table>
+                <tr>
+                    <td>Толщина</td>
+                    <td>
+                        <input id="width" size="6" maxlength="6" value="1px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Стиль:</td>
+                    <td>
+                        <select id="style">
+                            <option value="solid">Сплошная</option>
+                            <option value="dotted">Пунктирная</option>
+                            <option value="dashed">Штриховая</option>
+                            <option value="double">Двойная</option>
+                            <option value="groove">Желоб</option>
+                            <option value="ridge">Выступ</option>
+                            <option value="inset">Выпуклая</option>
+                            <option value="outset">Вдавленная</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Цвет</td>
+                    <td><input type="color" id="color" value="#cccccc"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" id="rounded"> Скругленные углы
+                    </td>
+                </tr>
+                <tr>
+                    <td>Радиус скругления</td>
+                    <td>
+                        <input id="radius" size="6" maxlength="6" value="5px" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Сгенерировать код">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <pre id="output"></pre>
+        <script>
+            const form = document.getElementById('form');
+            const width = document.getElementById('width');
+            const style = document.getElementById('style');
+            const color = document.getElementById('color');
+            const rounded = document.getElementById('rounded');
+            const radius = document.getElementById('radius');
+            const output = document.getElementById('output');
+
+            rounded.addEventListener('change', () => {
+                radius.disabled = !rounded.checked;
+            });
+
+            form.addEventListener('submit', evt => {
+                evt.preventDefault();
+                let s = `border: ${width.value} ` +
+                        `${style.options[style.selectedIndex].value} ` +
+                        `${color.value};`;
+                if (rounded.checked)
+                    s += `\nborder-radius: ${radius.value};`;
+                output.style = s;
+                output.textContent = s;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Предварительный просмотр</title>
+        <style>
+            #preview {
+                display: flex;
+                flex-wrap: wrap;
+                border: 1px solid lightgrey;
+            }
+            #preview > div {
+                width: 200px;
+                height: 150px;
+                margin: 10px;
+                background-color: lightgrey;
+            }
+            #preview > div > img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Предварительный просмотр</h1>
+        <p>Выберите файлы</p>
+        <p><input type="file" id="file" accept="image/*" multiple></p>
+        <div id="preview"></div>
+        <script>
+            const file = document.getElementById('file');
+            const preview = document.getElementById('preview');
+            const objURLs = [];
+        
+            function loadFiles(files) {
+                let fr;
+                preview.innerHTML = '';
+                for (objURL of objURLs)
+                    URL.revokeObjectURL(objURL);
+                fs = [];
+                for (let f of files) {
+                    const objURL = URL.createObjectURL(f);
+                    fs.push(objURL);
+                    const div = document.createElement('div');
+                    const img = document.createElement('img');
+                    img.src = objURL;
+                    div.append(img)
+                    preview.append(div);
+                }
+            }
+        
+            file.addEventListener('change', () => {
+                loadFiles(file.files);
+            });
+            file.addEventListener('dragover', evt => {
+                evt.preventDefault();
+            });
+            file.addEventListener('drop', evt => {
+                evt.preventDefault();
+                loadFiles(evt.dataTransfer.files);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Временное хранение данных</title>
+    </head>
+    <body>
+        <h1>Временное хранение данных</h1>
+        <form>
+            <p>
+                <textarea id="article" style="width: 40em; height: 20em"></textarea>
+            </p>
+            <p><input type="submit" value="Отправить"></p>
+        </form>
+        <script>
+            let isSubmitted = false;
+
+            window.addEventListener('beforeunload', () => {
+                if (!isSubmitted) {
+                    const article = document.getElementById('article');
+                    if (article.value)
+                        window.localStorage.setItem('article', article.value);
+                }
+            });
+
+            window.addEventListener('load', () => {
+                const text = window.localStorage.getItem('article');
+                if (article) {
+                    const article = document.getElementById('article');
+                    article.value = text;
+                }
+            });
+
+            document.forms[0].addEventListener('submit', () => {
+                isSubmitted = true;
+                window.localStorage.removeItem('article');
+            });
+        </script>
+    </body>
+</html>

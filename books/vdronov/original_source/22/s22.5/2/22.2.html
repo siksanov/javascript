@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Вычисление простых чисел</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            input[type=number] {
+                width: 100px;
+            }
+            select {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Вычисление простых чисел</h1>
+        <form>
+            <p>От: <input type="number" min="1" value="1">
+            до: <input type="number" min="1" value="100"></p>
+            <p><input type="submit" value="Вычислить"></p>
+            <p><select size="10"></select></p>
+            <p><input type="button" value="Стоп" disabled></p>
+        </form>
+        <script>
+            const form = document.forms[0];
+            let worker;
+
+            function processResult(evt) {
+                if (evt.data == 'stop') {
+                    form.elements[2].disabled = false;
+                    form.elements[4].disabled = true;
+                    worker.terminate();
+                } else {
+                    const el = document.createElement('option');
+                    el.textContent = evt.data;
+                    form.elements[3].add(el);
+                }
+            }
+
+            form.elements[4].addEventListener('click', () => {
+                form.elements[2].disabled = false;
+                form.elements[4].disabled = true;
+                worker.terminate();
+            });
+
+            form.addEventListener('submit', evt => {
+                evt.preventDefault();
+                form.elements[3].innerHTML = '';
+                form.elements[2].disabled = true;
+                form.elements[4].disabled = false;
+                worker = new Worker('22.4.js');
+                worker.addEventListener('message', processResult);
+                const data = {
+                    min: form.elements[0].valueAsNumber,
+                    max: form.elements[1].valueAsNumber
+                };
+                worker.postMessage(data);
+            });
+        </script>
+    </body>
+</html>

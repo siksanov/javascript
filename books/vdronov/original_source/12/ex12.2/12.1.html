@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Итераторы и генераторы</title>
+    </head>
+    <body>
+        <form>
+            <label>Количество чисел: </label>
+            <input type="number" id="cnt">
+            <input type="button" id="start" value="Вычислить">
+        </form>
+        <p id="output"></p>
+        <script src="12.1.js"></script>
+        <script>
+            const cnt = document.getElementById('cnt');
+            const output = document.getElementById('output');
+            const start = document.getElementById('start');
+            start.addEventListener('click', () => {
+                const fCount = +cnt.value;
+                const fibs = [...fibonacci(fCount)];
+                output.textContent = fibs.join(' | ');
+            });
+        </script>
+    </body>
+</html>

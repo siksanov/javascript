@@ -1,0 +1,9 @@
+const languages = [
+    ['JavaScript', 19.1],
+    ['Java', 14],
+    ['Python', 13.4],
+    ['C#', 13.3],
+    ['TypeScript', 13.3],
+    ['PHP', 7.1],
+    ['Kotlin', 3.2]
+];

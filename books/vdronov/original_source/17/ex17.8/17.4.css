@@ -1,0 +1,60 @@
+.slider main {
+    position: relative;
+    height: 300px;
+}
+.slider main img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.0;
+    height: 0%;
+    transition: opacity 0.3s, height 0.3s step-end;
+}
+.slider main img.active {
+    opacity: 1.0;
+    height: 100%;
+    transition: opacity 0.3s, height 0.3s step-start;
+}
+.slider nav {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 30px auto auto;
+}
+.slider nav > * {
+    width: 20pt;
+    height: 20pt;
+    font-size: 20pt;
+    line-height: 20pt;
+    text-align: center;
+    margin: auto 10px;
+    border: thin solid grey;
+    color: black;
+    background-color: white;
+    transition: color 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+.slider nav a {
+    text-decoration: none;
+}
+.slider nav > *.active {
+    color: white;
+    background-color: black;
+    transition: color 0.3s, background-color 0.3s;
+    cursor: auto;
+}
+#preview {
+    position: absolute;
+    width: 120px;
+    height: 80px;
+    background: left/contain no-repeat;
+    opacity: 0.0;
+    transform: scale(0.0, 0.0);
+    transition: opacity 0.3s, transform 0.3s;
+}
+#preview.active {
+    opacity: 1.0;
+    transform: scale(1.0, 1.0);
+    transition: opacity 0.3s, transform 0.3s;
+}

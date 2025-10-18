@@ -1,0 +1,20 @@
+{
+  "name": "photogallery",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Простая фотогалерея",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "keywords": [
+    "photogallery",
+    "photo",
+    "gallery"
+  ],
+  "author": "Читатель",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "~3.5"
+  }
+}

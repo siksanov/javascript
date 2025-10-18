@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Факториал</title>
+    </head>
+    <body>
+        <form>
+            <input id="num">
+            <input type="button" id="calculate" value="Рассчитать">
+        </form>
+        <p id="output"></p>
+        <script src="8.7.js"></script>
+        <script>
+            const num = document.getElementById('num');
+            const calculate = document.getElementById('calculate');
+            const output = document.getElementById('output');
+
+            calculate.addEventListener('click', () => {
+                const input = parseInt(num.value);
+                output.textContent = factorial(input);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS-код для создания просветов</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            td {
+                padding: 10px;
+                text-align: center;
+            }
+            tr:last-child td {
+                text-align: right;
+            }
+            #output {
+                border: thin solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS-код для создания просветов</h1>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        Сверху:
+                        <input type="text" id="top" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Слева:
+                        <input type="text" id="left" size="5" maxlength="5" value="0px" required>
+                    </td>
+                    <td>
+                        Справа:
+                        <input type="text" id="right" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Снизу:
+                        <input type="text" id="bottom" size="5" maxlength="5" value="0px" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Вид просветов:<br>
+                        <input type="radio" id="padding" name="kind" checked> Внутренние
+                    </td>
+                    <td><br>
+                        <input type="radio" id="margin" name="kind"> Внешние
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Сгенерировать код">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <pre id="output"></pre>
+        <script type="text/javascript">
+            const form = document.forms[0];
+            const output = document.getElementById('output');
+
+            const units = ['px', 'pt', 'mm', 'cm', '%', 'in', 'pc'];
+
+            function isUnitPresents(val) {
+                for (let u of units) {
+                    if (val.endsWith(u))
+                        return true;
+                }
+                return false;
+            }
+
+            function checkValue() {
+                if (this.validity.customError)
+                    this.setCustomValidity('');
+                if (this.validity.valid) {
+                    if (!isUnitPresents(this.value))
+                        this.setCustomValidity('Задайте единицу измерения после ' +
+                                                'значения просвета');
+                } else if (this.validity.valueMissing)
+                    this.setCustomValidity('Введите величину просвета');
+            }
+            
+            form.elements[0].addEventListener('change', checkValue);
+            form.elements[1].addEventListener('change', checkValue);
+            form.elements[2].addEventListener('change', checkValue);
+            form.elements[3].addEventListener('change', checkValue);
+
+            form.addEventListener('submit', evt => {
+                evt.preventDefault();
+                const top = form.elements[0].value, left = form.elements[1].value,
+                    right = form.elements[2].value, bottom = form.elements[3].value;
+                let s = (form.elements[4].checked) ? 'padding: ' : 'margin: ';
+                if (top == bottom && left == right && left == bottom)
+                    s += top;
+                else if (top == bottom && left == right)
+                    s += `${top} ${left}`;
+                else if (left == right)
+                    s += `${top} ${left} ${bottom}`;
+                else
+                    s += `${top} ${right} ${bottom} ${left}`;
+                s += ';';
+                output.style = s;
+                output.textContent = s;
+            });
+        </script>
+    </body>
+</html>

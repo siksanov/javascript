@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="21.6.css" rel="stylesheet">
+        <title>Отложенная загрузка изображений</title>
+    </head>
+    <body>
+        <h1>Суши-бар «Йокогама»</h1>
+        <article>
+            <h2>Чукка</h2>
+            <img data-src="21.6/sushi_chukka.jpg">
+            <p>Диетические суши, приготовляемые из одноименного салата,
+                риса, кунжута и водорослей нори.</p>
+            <div>55 ₽</div>
+        </article>
+        <article>
+            <h2>Магуро</h2>
+            <img data-src="21.6/sushi_maguro.jpg">
+            <p>Классические суши. Готовятся из тунца и риса.</p>
+            <div>65 ₽</div>
+        </article>
+        <article>
+            <h2>Тобико</h2>
+            <img data-src="21.6/sushi_tobiko.jpg">
+            <p>Икра летучей рыбы, рис, нори.</p>
+            <div>95 ₽</div>
+        </article>
+        <article>
+            <h2>Унаги</h2>
+            <img data-src="21.6/sashimi_unagi.jpg">
+            <p>Копченый угорь, свежий салат, кунжут и одноименный соус.</p>
+            <div>350 ₽</div>
+        </article>
+        <article>
+            <h2>Хамачи</h2>
+            <img data-src="21.6/sashimi_hamachi.jpg">
+            <p>Готовится из желтохвоста, лакедры, зеленого лука, риса и
+                дайкона.</p>
+            <div>800 ₽ (<del>900 ₽</del>)</div>
+        </article>
+        <script>
+            function vdHandler(elements) {
+                for (let el of elements) {
+                    if (el.isIntersecting) {
+                        el.target.src = el.target.dataset.src;
+                        el.target.dataset.src = '';
+                        vd.unobserve(el.target);
+                    }
+                }
+            }
+
+            const vd = new IntersectionObserver(vdHandler);
+
+            const cImgs = document.querySelectorAll('article img');
+            for (let el of cImgs)
+                vd.observe(el);
+        </script>
+    </body>
+</html>
