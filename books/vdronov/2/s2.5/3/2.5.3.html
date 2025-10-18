@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Тригонометрия</title>
+    </head>
+    <body>
+        <form>
+            <p>
+                <input id="statement">
+            </p>
+        </form>
+        <p>sin: <span id="sin"></p>
+        <p>cos: <span id="cos"></p>
+        <p>tan: <span id="tan"></p>
+        <script>
+            const statement = document.getElementById('statement');
+            const sin = document.getElementById('sin');
+            const cos = document.getElementById('cos');
+            const tan = document.getElementById('tan');
+
+            function onStatementInput() {
+                const statement = parseFloat(this.value);
+                const rads = statement * Math.PI / 180;
+                sin.textContent = Math.sin(rads);
+                cos.textContent = Math.cos(rads);
+                tan.textContent = Math.tan(rads);
+            }
+            statement.addEventListener('input', onStatementInput);
+        </script>
+    </body>
+</html>

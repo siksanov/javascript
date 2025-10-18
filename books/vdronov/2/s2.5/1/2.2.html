@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квадраты и кубы чисел 2</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            padding: 3pt;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Число</th>
+                <th>Число<sup>2</sup></th>
+                <th>Число<sup>3</sup></th>
+                <th>Число<sup>4</sup></th>
+            </tr>
+        </thead>
+        <tbody id="output">
+        </tbody>
+    </table>
+    <script>
+        const output = document.getElementById('output');
+        let s = '';
+        for (let i = 1; i < 11; i++)
+            s = s + '<tr>' +
+                '<td>' + i + '</td>' +
+                '<td>' + i ** 2 + '</td>' +
+                '<td>' + i ** 3 + '</td>' +
+                '<td>' + i ** 4 + '</td>' +
+                '</tr>';
+        output.innerHTML = s;
+    </script>
+</body>
+
+</html>
