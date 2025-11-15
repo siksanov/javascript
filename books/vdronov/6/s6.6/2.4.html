@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Преобразователь величин</title>
+    </head>
+    <body>
+        <form>
+            <p>
+                <input id="inches">
+            </p>
+        </form>
+        <div id="values"></div>
+        <script>
+            const format = {
+                style: 'unit',
+                unit: 'millimeter',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            };
+
+            const inches = document.getElementById('inches');
+            const values = document.getElementById('values');
+
+            function onInchesInput() {
+                const inchesS = this.value;
+                let inchesN = parseFloat(inchesS);
+                if (inchesS) {
+                    if (inchesS.includes('см'))
+                        inchesN *= 10;
+                    else if (inchesS.includes('м'))
+                        inchesN *= 100;
+                    const val = inchesN * 25.4;
+                    values.textContent = val.toLocaleString('ru-RU', format);
+                } else
+                    values.textContent = null;
+            }
+            
+            inches.addEventListener('input', onInchesInput);
+        </script>
+    </body>
+</html>
