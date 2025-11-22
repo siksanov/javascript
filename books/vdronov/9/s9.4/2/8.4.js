@@ -25,6 +25,7 @@ function createSpoilers(...elements) {
     elements.forEach((v, k) => {
         if (typeof v === 'string')
             v = document.getElementById(v);
+        //(typeof v === 'string')?.v = document.getElementById(v);
         createSpoiler(v,...k);
     })
 }
